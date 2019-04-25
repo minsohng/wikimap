@@ -47,6 +47,87 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//login page
+app.get("/login", (req, res) => {
+  res.send("login page");
+});
+
+//register page
+app.get("/register", (req, res) => {
+  res.send("register page");
+});
+
+//view all maps
+app.get("/maps", (req, res) => {
+
+  // show all maps in maps table
+
+  res.send("view all maps");
+});
+
+//create new map
+app.post("/maps", (req, res) => {
+  //check isLoggedin
+
+  //add a row in maps table
+
+  // after creating new map redirect to the map created /map/:id
+});
+
+//create new map
+app.get("/maps/new", (req, res) => {
+  // check isLoggedin
+
+  res.send("create new map");
+});
+
+app.get("/my_maps", (req, res) => {
+  // check isLoggedin
+
+  // show maps associated with userid
+
+  res.send("my maps");
+});
+
+//show map with id
+app.get("/maps/:id", (req, res) => {
+
+  //show map with mapid
+  res.send("render map id");
+});
+
+app.put("/maps/:id", (req, res) => {
+  // check isLoggedin && does map associate with userid who is logged in
+
+  //edit or update map name
+
+  //redirect to map with id
+});
+
+app.delete("/maps/:id", (req, res) => {
+  // check isLoggedin && does map associate with userid who is logged in
+
+  //delete a maps row with maps id
+
+  //redirect to my maps
+});
+
+
+/*
+
+routes for events
+
+*/
+
+
+/*
+
+routes for profiles
+
+*/
+
+
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
