@@ -19,6 +19,11 @@ const usersRoutes = require("./routes/users");
 const mapsRoutes = require("./routes/maps");
 const eventsRoutes = require("./routes/events");
 
+
+// import data-helper functions
+const DataHelpers = require("./lib/data-helpers.js")(knex);
+
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -47,8 +52,16 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/profiles", (req, res) => {
+
+  // check isLoggedIn
+
+  res.send("profile page");
+});
+
 //login page
 app.get("/login", (req, res) => {
+
   res.send("login page");
 });
 
@@ -69,7 +82,7 @@ app.get("/maps", (req, res) => {
 app.post("/maps", (req, res) => {
   //check isLoggedin
 
-  //add a row in maps table
+  //add a row in maps table and return its map id
 
   // after creating new map redirect to the map created /map/:id
 });
@@ -84,7 +97,7 @@ app.get("/maps/new", (req, res) => {
 app.get("/my_maps", (req, res) => {
   // check isLoggedin
 
-  // show maps associated with userid
+  // show maps associated with userid and maps u contributed
 
   res.send("my maps");
 });
@@ -92,7 +105,8 @@ app.get("/my_maps", (req, res) => {
 //show map with id
 app.get("/maps/:id", (req, res) => {
 
-  //show map with mapid
+  //pass all events associated with mapid
+  //redirect to maps/:id
   res.send("render map id");
 });
 
@@ -116,13 +130,6 @@ app.delete("/maps/:id", (req, res) => {
 /*
 
 routes for events
-
-*/
-
-
-/*
-
-routes for profiles
 
 */
 
