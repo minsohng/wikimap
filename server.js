@@ -49,7 +49,7 @@ app.use("/api/events", eventsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("homepage");
 });
 
 app.get("/profiles", (req, res) => {
@@ -62,7 +62,7 @@ app.get("/profiles", (req, res) => {
 //login page
 app.get("/login", (req, res) => {
 
-  res.send("login page");
+  res.render("login");
 });
 
 //register page
