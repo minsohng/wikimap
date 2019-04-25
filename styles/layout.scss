@@ -5,3 +5,19 @@ body {
     color: #244751;
   }
 }
+
+button {
+  display: block;
+}
+
+input {
+  display: block;
+}
+
+.login-btn, .reg-btn {
+  display: inline-block;
+}
+
+.left-side {
+  padding: 20px;
+}
