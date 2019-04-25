@@ -1,5 +1,5 @@
 body {
-  background-color: #EEE;
+  background-color: white;
 
   h1 {
     color: #244751;
@@ -8,10 +8,16 @@ body {
 
 button {
   display: block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: 1px solid #444;
 }
 
 input {
   display: block;
+  border: 1px solid #444;
+  padding: 5px;
+  margin-top: 10px;
 }
 
 .login-btn, .reg-btn {
@@ -20,4 +26,8 @@ input {
 
 .left-side {
   padding: 20px;
+}
+
+.sign-in {
+  margin-top: 100px
 }
