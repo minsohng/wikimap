@@ -56,7 +56,7 @@ app.get("/profiles", (req, res) => {
 
   // check isLoggedIn
 
-  res.send("profile page");
+  res.render("profile");
 });
 
 //login page
@@ -75,7 +75,7 @@ app.get("/maps", (req, res) => {
 
   // show all maps in maps table
 
-  res.send("view all maps");
+  res.render("maps");
 });
 
 //create new map
@@ -91,7 +91,7 @@ app.post("/maps", (req, res) => {
 app.get("/maps/new", (req, res) => {
   // check isLoggedin
 
-  res.send("create new map");
+  res.render("create_map");
 });
 
 app.get("/my_maps", (req, res) => {
@@ -99,7 +99,7 @@ app.get("/my_maps", (req, res) => {
 
   // show maps associated with userid and maps u contributed
 
-  res.send("my maps");
+  res.render("my_maps");
 });
 
 //show map with id
