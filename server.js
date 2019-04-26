@@ -59,25 +59,22 @@ app.use("/api/events", eventsRoutes(knex));
 
 var templateVar = {
   email: undefined,
-  maps: undefined
+  maps: undefined,
+  events: undefined
 
 }
 
 // Home page
 app.get("/", (req, res) => {
 
-  if (req.session.user_id) {
-    dataHelpers.getEmail(req.session.user_id, (err, email) => {
-      if (err) {
-        console.error(err);
-      } else {
-        templateVar.email = email;
-        res.render("homepage", templateVar);
-      }
-    });
-  } else {
-    res.render("homepage", templateVar);
-  }
+  dataHelpers.getAllMaps((err, maps) => {
+    if (err) {
+      console.error(err);
+    } else {
+      templateVar.maps = maps;
+      res.render("homepage", templateVar);
+    }
+  });
 });
 
 
@@ -121,14 +118,16 @@ app.get("/register", (req, res) => {
 app.get("/maps", (req, res) => {
   //create template vars
   // show all maps in maps table
-  dataHelpers.getAllMaps((err, maps) => {
-    if (err) {
-      console.error(err);
-    } else {
-      // res.json(maps);
-      res.render("maps", templateVar);
-    }
-  });
+  // dataHelpers.getEvents((err, events) => {
+  //   if (err) {
+  //     console.error(err);
+  //   } else {
+  //     templateVar.events = events;
+  //     res.render("maps", templateVar);
+  //   }
+  // });
+
+  res.render("maps", templateVar)
 
 });
 
@@ -142,18 +141,21 @@ app.post("/maps", (req, res) => {
 
   //add a row in maps table with user id and map name
   // req.body.mapName
-  dataHelpers.setMap('Toronto', 1, (err, mapName) => {
+
+  const mapName = req.body.mapName;
+  const userId = req.session.user_id;
+  dataHelpers.setMap(mapName, userId, (err, mapName) => {
     if (err) {
       console.error(err);
     } else {
-      console.log("map name:", mapName);
+      res.send(mapName);
     }
   });
 
   // after creating new map redirect to the map created /map/:id
 });
 
-//create new map
+//render create new map page
 app.get("/maps/new", (req, res) => {
   // check isLoggedin
   if (!req.session.user_id) {
@@ -162,6 +164,7 @@ app.get("/maps/new", (req, res) => {
 
   res.render("create_map", templateVar);
 });
+
 
 app.get("/my_maps", (req, res) => {
   // check isLoggedin
@@ -191,10 +194,20 @@ app.get("/maps/:id", (req, res) => {
 
   //pass all events associated with mapid
   //redirect to maps/:id
-  res.send("render map id");
+  dataHelpers.getEvents(req.params.id, (err, events) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.json(events);
+    }
+  });
+
 });
 
 app.put("/maps/:id", (req, res) => {
+  if (!req.session.user_id) {
+    throw new Error("You are not logged in");
+  }
   // check isLoggedin && does map associate with userid who is logged in
 
   //edit or update map name
@@ -203,28 +216,27 @@ app.put("/maps/:id", (req, res) => {
 });
 
 app.delete("/maps/:id", (req, res) => {
+  if (!req.session.user_id) {
+    throw new Error("You are not logged in");
+  }
   // check isLoggedin && does map associate with userid who is logged in
-  // if (!req.session.user_id) {
-  //   throw new Error("You are not logged in");
-  // }
 
-  // if (dataHelpers.isOwner)
   dataHelpers.deleteMap(req.session.user_id, req.params.id);
 
-  //redirect to my maps
+  res.redirect('/my_maps');
 });
 
 
-app.get("/maps/:id/events", (req, res) => {
-  console.log(req.params.id);
-  dataHelpers.getEvents(req.params.id, (err, events) => {
-    if (err) {
-      console.error(err);
-    } else {
-      res.json(events);
-    }
-  });
-});
+// app.get("/maps/:id/events", (req, res) => {
+//   console.log(req.params.id);
+//   dataHelpers.getEvents(req.params.id, (err, events) => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       res.json(events);
+//     }
+//   });
+// });
 
 
 // routes for events

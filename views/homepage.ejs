@@ -32,8 +32,11 @@
             <% } -%>
             <div class="sign-in">
               <h3>Choose A Map</h3>
-              <button class="map-select btn btn-primary btn-block" href="#" role="button">Tech</button>
-              <button class="map-select btn btn-primary btn-block" href="#" role="button">Marketing</button>
+              <% maps.forEach( function(e) { %>
+
+              <button class="map-select btn btn-primary btn-block" href="#" role="button"><%= e.name %></button>
+
+              <% }); -%>
           </div>
           </div>
         </div>
