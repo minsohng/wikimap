@@ -62,12 +62,36 @@ app.get("/", (req, res) => {
   res.render("homepage");
 });
 
+
+
+var templateVar = {
+  email: undefined,
+  maps: undefined
+
+}
+
+
 app.get("/profiles", (req, res) => {
 
+  if (!req.session.user_id) {
+    throw new Error("You are not logged in");
+  }
   // check isLoggedIn
 
-  res.render("profile");
+
+  dataHelpers.getEmail(req.session.user_id, (err, email) => {
+    if (err) {
+      console.error(err);
+    } else {
+      templateVar.email = email;
+      res.render("profile", templateVar);
+    }
+  });
+
+
 });
+
+
 
 //login page
 app.get("/login", (req, res) => {
@@ -90,7 +114,7 @@ app.get("/maps", (req, res) => {
       console.error(err);
     } else {
       // res.json(maps);
-      res.render("maps");
+      res.render("maps", templateVar);
     }
   });
 
@@ -100,12 +124,13 @@ app.get("/maps", (req, res) => {
 //create new map
 app.post("/maps", (req, res) => {
   //check isLoggedin
-  if (!req.session.user_id) {
-    throw new Error("You are not logged in");
-  }
+  // if (!req.session.user_id) {
+  //   throw new Error("You are not logged in");
+  // }
 
   //add a row in maps table with user id and map name
-  dataHelpers.setMap(req.body.mapName, req.session.user_id, (err, mapName) => {
+  // req.body.mapName
+  dataHelpers.setMap('Toronto', 1, (err, mapName) => {
     if (err) {
       console.error(err);
     } else {
@@ -119,11 +144,11 @@ app.post("/maps", (req, res) => {
 //create new map
 app.get("/maps/new", (req, res) => {
   // check isLoggedin
-  if (!req.sessions.user_id) {
+  if (!req.session.user_id) {
     throw new Error("You are not logged in");
   }
 
-  res.render("create_map");
+  res.render("create_map", templateVar);
 });
 
 app.get("/my_maps", (req, res) => {
@@ -136,8 +161,13 @@ app.get("/my_maps", (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      // res.json(maps);
-      res.render("my_maps");
+      templateVar.maps = maps;
+
+
+      // data looks like this:
+      //[ anonymous { id: 1, name: 'TECH', user_id: 1 },
+      // anonymous { id: 3, name: 'Toronto', user_id: 1 } ]
+      res.render("my_maps", templateVar);
     }
   })
   // show maps associated with userid and maps u contributed
@@ -162,9 +192,9 @@ app.put("/maps/:id", (req, res) => {
 
 app.delete("/maps/:id", (req, res) => {
   // check isLoggedin && does map associate with userid who is logged in
-  if (!req.session.user_id) {
-    throw new Error("You are not logged in");
-  }
+  // if (!req.session.user_id) {
+  //   throw new Error("You are not logged in");
+  // }
 
   // if (dataHelpers.isOwner)
   dataHelpers.deleteMap(req.session.user_id, req.params.id);
@@ -187,7 +217,7 @@ app.get("/maps/:id/events", (req, res) => {
 
 // routes for events
 app.get("/events/new", (req, res) => {
-  res.render('create_event')
+  res.render('create_event', templateVar);
 });
 
 
