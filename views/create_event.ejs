@@ -26,7 +26,10 @@
             <h1>Logo</h1>
             <h2>Email</h2>
             <button class="reg-btn" type="button">Logout</button>
-            <div class="sign-in_2">
+
+
+            <!-- Create or choose a map section -->
+            <div id="choose-map" class="sign-in_2">
               <h2>Choose Or<br> Create A Map</h2>
               <div class="input-group mb-3">
                 <div class="drop-down">
@@ -38,29 +41,38 @@
                   <button class="drop-down-item">+ Create Map</button>
                 </div>
               </div>
-                <div class="input-group mb-3">
-                  <h3>Event Address</h3>
-                  <form>
-                    <input type="text" name="email" placeholder="Event Address">
-                  </form>
-              <div class="drop-down">
-                <h3>Event Info</h3>
-                <form>
-                  <input type="text" name="email" placeholder="Name Of Event">
-                  <textarea placeholder="Description"></textarea>
-                  start date
-                  <input type="date" name="start-date" value="2019-05-25">
-                  end date
-                  <input type="date" name="end-date" value="2019-05-25">
-                  <input type="text" name="email" placeholder="Event URL">
-                  <input type="text" name="email" placeholder="Image URL">
-                  <button type="submit">Create Event</button>
-                </form>
-              </div>
-              </div>
             </div>
+
+
+            <!-- Event address section -->
+            <div style="display: none;" id="event-address" class="input-group mb-3 sign-in_2">
+              <h3>Event Address</h3>
+              <form>
+                <input type="text" name="email" placeholder="Event Address">
+              </form>
+            </div>
+
+
+            <!-- Event info form section -->
+            <div style="display: none;" id="event-form" class="drop-down sign-in_2">
+              <h3>Event Info</h3>
+              <form>
+                <input type="text" name="email" placeholder="Name Of Event">
+                <textarea placeholder="Description"></textarea>
+                start date
+                <input type="date" name="start-date" value="2019-05-25">
+                end date
+                <input type="date" name="end-date" value="2019-05-25">
+                <input type="text" name="email" placeholder="Event URL">
+                <input type="text" name="email" placeholder="Image URL">
+                <button type="submit">Create Event</button>
+              </form>
+            </div>
+
+
           </div>
         </div>
+
         <div class="col-sm-7 col-md-8 col-xl-9">
              <div id="map"></div>
         </div>

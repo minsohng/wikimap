@@ -27,6 +27,7 @@ button {
   border: 1px solid #444;
 }
 
+
 input {
   outline: none;
   display: block;
@@ -48,6 +49,12 @@ textarea {
 
 .login-btn, .reg-btn {
   display: inline-block;
+}
+
+.login-btn:hover, .reg-btn:hover {
+  display: inline-block;
+  background-color: #444;
+  color: white;
 }
 
 .content-wrapper {
