@@ -14,6 +14,7 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const cookieSession = require('cookie-session');
+const methodOverride = require('method-override');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -33,6 +34,7 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
+app.use(methodOverride('_method'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
@@ -55,20 +57,28 @@ app.use("/api/maps", mapsRoutes(knex));
 app.use("/api/events", eventsRoutes(knex));
 
 
-
-
-// Home page
-app.get("/", (req, res) => {
-  res.render("homepage");
-});
-
-
-
 var templateVar = {
   email: undefined,
   maps: undefined
 
 }
+
+// Home page
+app.get("/", (req, res) => {
+
+  if (req.session.user_id) {
+    dataHelpers.getEmail(req.session.user_id, (err, email) => {
+      if (err) {
+        console.error(err);
+      } else {
+        templateVar.email = email;
+        res.render("homepage", templateVar);
+      }
+    });
+  } else {
+    res.render("homepage", templateVar);
+  }
+});
 
 
 app.get("/profiles", (req, res) => {
@@ -78,16 +88,7 @@ app.get("/profiles", (req, res) => {
   }
   // check isLoggedIn
 
-
-  dataHelpers.getEmail(req.session.user_id, (err, email) => {
-    if (err) {
-      console.error(err);
-    } else {
-      templateVar.email = email;
-      res.render("profile", templateVar);
-    }
-  });
-
+  res.render("profile", templateVar);
 
 });
 
@@ -96,8 +97,19 @@ app.get("/profiles", (req, res) => {
 //login page
 app.get("/login", (req, res) => {
   req.session.user_id =  1;
-  res.render("login");
+  dataHelpers.getEmail(req.session.user_id, (err, email) => {
+    if (err) {
+      console.error(err);
+    } else {
+      templateVar.email = email;
+      res.render("login", templateVar);
+    }
+  });
+});
 
+app.post("/logout", (req, res) => {
+  res.clearCookie('session');
+  res.redirect('/');
 });
 
 //register page
