@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
-    <style>
-      #map {
-        height: 100%;
-      }
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+    <title>Create Map</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -31,22 +21,24 @@
 
     <div>
       <div class="row">
-        <div class="col-md-4">
-          <div class="left-side">
-          <h1>Logo</h1>
-          <button class="login-btn">Login</button>
-          <button class="reg-btn">Register</button>
-          <div class="sign-in">
-            <h3>Sign In</h3>
-            <form>
-              <input type="text" name="email">
-              <input type="text" name="password">
-              <button>Sign In</button>
-            </form>
-          </div>
+        <div class="col-sm-5 col-md-4 col-xl-3">
+          <div class="content-wrapper">
+            <h1>Logo</h1>
+            <h2>Email</h2>
+            <button class="reg-btn" type="button">Logout</button>
+            <div class="sign-in_2">
+              <h2>Created Map</h2>
+              <button contenteditable class="map-select btn btn-primary btn-block">Tech</button>
+              <button contenteditable class="map-select btn btn-primary btn-block">Marketing</button>
+            </div>
+            <div class="sign-in_2">
+              <h2>Contributed Map</h2>
+              <button contenteditable class="map-select btn btn-primary btn-block">Tech</button>
+              <button contenteditable class="map-select btn btn-primary btn-block">Marketing</button>
+            </div>
           </div>
         </div>
-        <div style="background-color: #555" class="col-md-8">
+        <div class="col-sm-7 col-md-8 col-xl-9">
              <div id="map"></div>
         </div>
       </div>
@@ -65,4 +57,3 @@
     async defer></script>
   </body>
 </html>
-
