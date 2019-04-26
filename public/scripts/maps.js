@@ -5,9 +5,8 @@ function initMap() {
         center: {lat: 49.273099, lng: -123.119668},
         zoom: 12
         });
-      createEvent();
+      addEvents(data, google);
   }
-
 
 
 $(document).ready(function(){});
