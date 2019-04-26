@@ -9,6 +9,11 @@ $(() => {
 
 
   // Drop down list for selecting a map
+
+  function loadmaps () {
+    console.log($.get('/maps'))
+  }
+
   $('.drop-down').on('click', event => {
 
   })
