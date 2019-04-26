@@ -21,7 +21,7 @@ const eventsRoutes = require("./routes/events");
 
 
 // import data-helper functions
-const DataHelpers = require("./lib/data-helpers.js")(knex);
+const dataHelpers = require("./lib/data-helpers.js")(knex);
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -72,15 +72,29 @@ app.get("/register", (req, res) => {
 
 //view all maps
 app.get("/maps", (req, res) => {
-
   // show all maps in maps table
-
-  res.send("view all maps");
+  dataHelpers.getAllMaps((err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.json(maps);
+    }
+  });
 });
+
+
 
 //create new map
 app.post("/maps", (req, res) => {
   //check isLoggedin
+
+  // dataHelpers.setMap('hello', 2, (err, mapName) => {
+  //   if (err) {
+  //     console.error(err);
+  //   } else {
+  //     console.log("map name:", mapName);
+  //   }
+  // });
 
   //add a row in maps table and return its map id
 
@@ -126,6 +140,17 @@ app.delete("/maps/:id", (req, res) => {
   //redirect to my maps
 });
 
+
+app.get("/maps/:id/events", (req, res) => {
+  console.log(req.params.id);
+  dataHelpers.getEvents(req.params.id, (err, events) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.json(events);
+    }
+  });
+});
 
 /*
 
