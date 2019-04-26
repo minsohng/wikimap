@@ -127,11 +127,13 @@ app.delete("/maps/:id", (req, res) => {
 });
 
 
-/*
 
-routes for events
 
-*/
+// routes for events
+app.get("/events/new", (req, res) => {
+  res.render('create_event')
+})
+
 
 
 
