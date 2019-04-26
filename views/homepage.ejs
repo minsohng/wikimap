@@ -25,29 +25,42 @@
 
     <div>
       <div class="row">
+
+
         <div class="col-sm-5 col-md-4 col-xl-3">
           <div class="content-wrapper">
             <h1>Logo</h1>
-            <button class="login-btn">Login</button>
-            <button class="reg-btn">Register</button>
+
+            <% if (email) { -%>
+              <h2><%=email%></h2>
+            <% } else { -%>
+              <button class="login-btn">Login</button>
+              <button class="reg-btn">Register</button>
+            <% } -%>
             <div class="sign-in">
               <h3>Choose A Map</h3>
-              <button class="map-select btn btn-primary btn-block" href="#" role="button">Tech</button>
-              <button class="map-select btn btn-primary btn-block" href="#" role="button">Marketing</button>
+              <% maps.forEach( function(e) { %>
+
+              <button class="map-select btn btn-primary btn-block" href="#" role="button"><%= e.name %></button>
+
+              <% }); -%>
           </div>
+
           </div>
         </div>
+
+
         <div class="col-sm-7 col-md-8 col-xl-9">
              <div id="map"></div>
         </div>
+
+
       </div>
     </div>
 
     <script>
 
     </script>
-
-
   </body>
 </html>
 

@@ -24,8 +24,13 @@
         <div class="col-sm-5 col-md-4 col-xl-3">
           <div class="content-wrapper">
             <h1>Logo</h1>
-            <button class="login-btn">Login</button>
-            <button class="reg-btn">Register</button>
+            <% if (email) { -%>
+              <h2><%=email%></h2>
+            <% } else { -%>
+              <button class="login-btn">Login</button>
+              <button class="reg-btn">Register</button>
+            <% } -%>
+
             <div class="sign-in">
               <h2>Tech</h2>
               <h4>Events</h4>
