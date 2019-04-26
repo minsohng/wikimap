@@ -3,7 +3,7 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (knex) => {
+module.exports = (knex, dataHelpers) => {
 
   router.get("/", (req, res) => {
     knex
@@ -13,6 +13,7 @@ module.exports = (knex) => {
         res.json(results);
     });
   });
+
 
   return router;
 }

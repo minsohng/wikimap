@@ -53,7 +53,7 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
-app.use("/api/maps", mapsRoutes(knex));
+app.use("/api/maps", mapsRoutes(knex, dataHelpers));
 app.use("/api/events", eventsRoutes(knex));
 
 
@@ -134,13 +134,10 @@ app.get("/maps", (req, res) => {
 
 //create new map
 app.post("/maps", (req, res) => {
-  //check isLoggedin
-  // if (!req.session.user_id) {
-  //   throw new Error("You are not logged in");
-  // }
 
-  //add a row in maps table with user id and map name
-  // req.body.mapName
+  if (!req.session.user_id) {
+    throw new Error("You are not logged in");
+  }
 
   const mapName = req.body.mapName;
   const userId = req.session.user_id;
@@ -148,7 +145,7 @@ app.post("/maps", (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      res.send(mapName);
+      res.redirect('/events/new');
     }
   });
 
@@ -192,15 +189,7 @@ app.get("/my_maps", (req, res) => {
 //show map with id
 app.get("/maps/:id", (req, res) => {
 
-  //pass all events associated with mapid
-  //redirect to maps/:id
-  dataHelpers.getEvents(req.params.id, (err, events) => {
-    if (err) {
-      console.error(err);
-    } else {
-      res.json(events);
-    }
-  });
+  res.render("maps", templateVar);
 
 });
 
@@ -227,20 +216,21 @@ app.delete("/maps/:id", (req, res) => {
 });
 
 
-// app.get("/maps/:id/events", (req, res) => {
-//   console.log(req.params.id);
-//   dataHelpers.getEvents(req.params.id, (err, events) => {
-//     if (err) {
-//       console.error(err);
-//     } else {
-//       res.json(events);
-//     }
-//   });
-// });
+app.get("/maps/:id/events", (req, res) => {
+  console.log(req.params.id);
+  dataHelpers.getEvents(req.params.id, (err, events) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.json(events);
+    }
+  });
+});
 
 
 // routes for events
 app.get("/events/new", (req, res) => {
+  console.log("in events/new")
   res.render('create_event', templateVar);
 });
 
