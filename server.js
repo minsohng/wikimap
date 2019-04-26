@@ -53,14 +53,15 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
-app.use("/api/maps", mapsRoutes(knex, dataHelpers));
+app.use("/api/maps", mapsRoutes(knex));
 app.use("/api/events", eventsRoutes(knex));
 
 
 var templateVar = {
   email: undefined,
   maps: undefined,
-  events: undefined
+  events: undefined,
+  mymaps: undefined
 
 }
 
@@ -230,8 +231,17 @@ app.get("/maps/:id/events", (req, res) => {
 
 // routes for events
 app.get("/events/new", (req, res) => {
-  console.log("in events/new")
-  res.render('create_event', templateVar);
+  console.log("in events/new");
+
+  dataHelpers.getMyMaps(req.session.user_id, (err, maps) => {
+    if (err) {
+      console.error(err);
+    } else {
+      templateVar.mymaps = maps;
+      console.log(maps)
+      res.render('create_event', templateVar);
+    }
+  });
 });
 
 

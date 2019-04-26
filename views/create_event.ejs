@@ -38,10 +38,12 @@
               <div class="input-group mb-3">
                 <div class="drop-down">
                   <button class="drop-down">Choose</button>
-                  <button class="drop-down-item">Map 1</button>
-                  <button class="drop-down-item">Map 2</button>
-                  <button class="drop-down-item">Map 3</button>
-                  <button class="drop-down-item">Map 4</button>
+
+                  <% mymaps.forEach( function(e) { %>
+
+                  <button class="drop-down-item" mapId= <%=e.id %> ><%= e.name %></button>
+
+                  <% });%>
                   <button class="drop-down-item">+ Create Map</button>
                 </div>
               </div>
