@@ -41,7 +41,7 @@
               <h3>Choose A Map</h3>
               <% maps.forEach( function(e) { %>
 
-              <button class="map-select btn btn-primary btn-block" href="#" role="button"><%= e.name %></button>
+                <button class="map-select btn btn-primary btn-block" href="#" role="button" mapId= <%=e.id%> > <%= e.name %></button>
 
               <% }); -%>
           </div>

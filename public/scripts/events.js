@@ -66,16 +66,16 @@ const data = [
 
 //------> function add event to the map and diusplay infowind
 function addEvents(events, google){
+  console.log(google)
   events.forEach(event =>{
-    console.log('hell');
+    console.log(event.latitude)
     let marker = new google.maps.Marker({
-      position: {lat: event.latitude, lng: event.longitude},
+      position: {lat: Number(event.latitude), lng: Number(event.longitude)},
       map: map,
       title: event.name
     });
     marker.setMap(map);
     let eventContent = createEvent(event);
-    console.log('hello');
     var infowindow = new google.maps.InfoWindow({
       content: eventContent,
     });
