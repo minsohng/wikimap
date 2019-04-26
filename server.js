@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const cookieSession = require('cookie-session');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -40,12 +41,21 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['hello']
+}));
+
 app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/maps", mapsRoutes(knex));
 app.use("/api/events", eventsRoutes(knex));
+
+
+
 
 // Home page
 app.get("/", (req, res) => {
@@ -61,7 +71,7 @@ app.get("/profiles", (req, res) => {
 
 //login page
 app.get("/login", (req, res) => {
-
+  req.session.user_id =  1;
   res.send("login page");
 });
 
@@ -72,8 +82,9 @@ app.get("/register", (req, res) => {
 
 //view all maps
 app.get("/maps", (req, res) => {
+  //create template vars
   // show all maps in maps table
-  dataHelpers.getAllMaps((err) => {
+  dataHelpers.getAllMaps((err, maps) => {
     if (err) {
       console.error(err);
     } else {
@@ -83,20 +94,21 @@ app.get("/maps", (req, res) => {
 });
 
 
-
 //create new map
 app.post("/maps", (req, res) => {
   //check isLoggedin
+  if (!req.session.user_id) {
+    throw new Error("You are not logged in");
+  }
 
-  // dataHelpers.setMap('hello', 2, (err, mapName) => {
-  //   if (err) {
-  //     console.error(err);
-  //   } else {
-  //     console.log("map name:", mapName);
-  //   }
-  // });
-
-  //add a row in maps table and return its map id
+  //add a row in maps table with user id and map name
+  dataHelpers.setMap(req.body.mapName, req.session.user_id, (err, mapName) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log("map name:", mapName);
+    }
+  });
 
   // after creating new map redirect to the map created /map/:id
 });
@@ -104,16 +116,27 @@ app.post("/maps", (req, res) => {
 //create new map
 app.get("/maps/new", (req, res) => {
   // check isLoggedin
+  if (!req.sessions.user_id) {
+    throw new Error("You are not logged in");
+  }
 
   res.send("create new map");
 });
 
 app.get("/my_maps", (req, res) => {
   // check isLoggedin
-
+  if (!req.session.user_id) {
+    throw new Error("You are not logged in");
+  }
+  //does MY maps ONLY at the moment
+  dataHelpers.getMyMaps(req.session.user_id, (err, maps) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.json(maps);
+    }
+  })
   // show maps associated with userid and maps u contributed
-
-  res.send("my maps");
 });
 
 //show map with id
@@ -134,8 +157,12 @@ app.put("/maps/:id", (req, res) => {
 
 app.delete("/maps/:id", (req, res) => {
   // check isLoggedin && does map associate with userid who is logged in
+  if (!req.session.user_id) {
+    throw new Error("You are not logged in");
+  }
 
-  //delete a maps row with maps id
+  // if (dataHelpers.isOwner)
+  dataHelpers.deleteMap(req.session.user_id, req.params.id);
 
   //redirect to my maps
 });
@@ -152,11 +179,7 @@ app.get("/maps/:id/events", (req, res) => {
   });
 });
 
-/*
 
-routes for events
-
-*/
 
 
 
