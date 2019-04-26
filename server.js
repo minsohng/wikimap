@@ -59,20 +59,21 @@ app.use("/api/events", eventsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("homepage");
 });
 
 app.get("/profiles", (req, res) => {
 
   // check isLoggedIn
 
-  res.send("profile page");
+  res.render("profile");
 });
 
 //login page
 app.get("/login", (req, res) => {
   req.session.user_id =  1;
-  res.send("login page");
+  res.render("login");
+
 });
 
 //register page
@@ -88,9 +89,11 @@ app.get("/maps", (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      res.json(maps);
+      // res.json(maps);
+      res.render("maps");
     }
   });
+
 });
 
 
@@ -120,7 +123,7 @@ app.get("/maps/new", (req, res) => {
     throw new Error("You are not logged in");
   }
 
-  res.send("create new map");
+  res.render("create_map");
 });
 
 app.get("/my_maps", (req, res) => {
@@ -133,10 +136,12 @@ app.get("/my_maps", (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      res.json(maps);
+      // res.json(maps);
+      res.render("my_maps");
     }
   })
   // show maps associated with userid and maps u contributed
+
 });
 
 //show map with id
@@ -179,6 +184,11 @@ app.get("/maps/:id/events", (req, res) => {
   });
 });
 
+
+// routes for events
+app.get("/events/new", (req, res) => {
+  res.render('create_event')
+});
 
 
 

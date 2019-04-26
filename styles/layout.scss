@@ -6,7 +6,21 @@ body {
   }
 }
 
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ol li {
+
+  list-style-type: none;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #444;
+}
+
 button {
+  outline: none;
   display: block;
   margin-top: 10px;
   padding: 10px 15px;
@@ -14,25 +28,80 @@ button {
 }
 
 input {
+  outline: none;
   display: block;
   border: 1px solid #444;
   width: 90%;
-  padding: 5px;
-  margin-top: 10px;
+  padding: 10px;
+  margin-top: 15px;
 }
+
+textarea {
+  width: 100%;
+  resize: none;
+  outline: none;
+  height: 100px;
+}
+
+
+// Login Page Styling
 
 .login-btn, .reg-btn {
   display: inline-block;
 }
 
-.left-side {
-  padding: 20px;
+.content-wrapper {
+  padding: 30px 15px 0px 30px;
 }
 
-.sign-in {
+div.sign-in {
   margin-top: 100px
+}
+
+div.sign-in_2 {
+  margin-top: 40px
 }
 
 .col-md-4 {
   height: 100vh;
+}
+
+.col-md-8 {
+  padding: 0px;
+}
+
+#map {
+        height: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+// Homepage Styling
+
+button.map-select {
+  text-align: left;
+  border: 1px solid #444;
+  background-color: transparent;
+  color: #444;
+  border-radius: 0px;
+  padding: 20px 10px;
+}
+
+// New Event
+
+div .drop-down {
+  width: 100%;
+  text-align: left;
+}
+
+div .drop-down-item {
+  width: 100%;
+  text-align: left;
+  margin-top: 0;
+  border-top: none;
 }
