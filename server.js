@@ -75,7 +75,7 @@ app.get("/maps", (req, res) => {
 
   // show all maps in maps table
 
-  res.render("maps");
+  res.render("homepage");
 });
 
 //create new map
