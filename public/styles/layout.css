@@ -113,7 +113,6 @@ div .drop-down-item {
   border-top: none;
 }
 
-
 button.event-btn {
   width: 50%;
 }
@@ -121,14 +120,15 @@ button.event-btn {
 button.edit-btn {
   width: 20%;
 }
+
 button.delete-btn {
   width: 20%;
 }
-
 .event_img {
   max-width: 100px;
   max-height: 100px;
   margin-bottom: 5px;
+
 }
 
 
@@ -157,5 +157,3 @@ button.delete-btn {
   font-size: 15px;
   margin:0;
 }
-
-

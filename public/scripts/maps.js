@@ -1,6 +1,5 @@
 //------> function create initial map
 let map;
-let map1;
 function initMap(events) {
   if (!events) {
     events = [];

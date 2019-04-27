@@ -56,12 +56,17 @@ function addEvents(events, google){
 
     marker.addListener('click', function() {
       infowindow.open(map, marker);
-      $(document).on('click', '.info-button', function(){
-        var htmlString = editEvent();
-        console.log(htmlString);
-        $(this).parent().html(htmlString);
+      // $(document).on('click', map, function(){
+      //   infowindow.close();
+        // var htmlString = editEvent();
+        // console.log(htmlString);
+        // $(this).parent().html(htmlString);
       })
+    google.maps.event.addListener(map, "click", function(event) {
+      infowindow.close();
     });
+    });
+
 
 
     // $('form').on('submit', function(event) {
@@ -81,6 +86,6 @@ function addEvents(events, google){
     //   },
     //   (err) => { console.log('Error') }
     // )
-  });
+  };
 
-}
+
