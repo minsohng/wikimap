@@ -108,15 +108,23 @@ function addEvents(events, google){
     });
 
 
-    //  $('#button').on('click',function(){
-    //   console.log('click');
+    // $('form').on('submit', function(event) {
+    // event.preventDefault();
+    // let data = $(this).serialize();
+    // $.ajax({
+    //   url: '/tweets',
+    //   method: 'POST',
+    //   data: data
+    // }).then(
+    //   (res) => {
+    //     loadTweets();
+    //     let form = document.getElementById('form');
+    //     let counter = document.getElementById('counter');
+    //     form.reset();
+    //     counter.textContent = '140';
+    //   },
+    //   (err) => { console.log('Error') }
+    // )
+  });
 
-    //   let form = new google.maps.InfoWindow({
-    //     content: formData,
-    //     });
-    //   infowindow.open(map, formData);
-    // });
-
-
-  })
 }
