@@ -158,6 +158,10 @@ button.delete-btn {
   margin:0;
 }
 
+.test {
+  color:blue;
+}
+
 #logo {
   margin-bottom: 20px;
   height: 60px ;
