@@ -26,9 +26,9 @@ function initialize() {
     var lng = "<b>Longitude: </b>"+ place.geometry.location.lng() + "</br>";
     // console.log(place.geometry.location.lat(), place.geometry.location.lng())
     document.getElementById('address_text').innerHTML = location;
-
     $('#lng').val(place.geometry.location.lng());
     $('#lat').val(place.geometry.location.lat());
+
   })
   initMap()
 }
