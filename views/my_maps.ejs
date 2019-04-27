@@ -34,8 +34,6 @@
               <h2>Created Map</h2>
 
               <% maps.forEach( function(e) { %>
-
-
                 <% if (e.user_id === user_id) { %>
                  <button contenteditable class="map-select btn btn-primary btn-block" mapId=<%=e.id%>><%=e.name%></button>
                 <% } %>

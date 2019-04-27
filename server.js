@@ -283,6 +283,9 @@ app.delete("/events/:id", (req, res) => {
 
 
 app.get('/events/:id', (req, res) => {
+  if (!req.session.user_id) {
+    throw new Error ("You are not logged in");
+  }
   templateVar.eventId = req.params.id
   res.render('edit_events', templateVar)
 })
