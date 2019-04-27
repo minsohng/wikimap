@@ -255,7 +255,7 @@ app.delete('/my_events', (req, res) => {
 });
 
 
-app.get('/edit_events', (req, res) => {
+app.get('/events/:id', (req, res) => {
 res.render('edit_events', templateVar)
 })
 

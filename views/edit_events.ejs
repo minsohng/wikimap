@@ -32,15 +32,16 @@
             <h1>Logo</h1>
             <h2><%= email %></h2>
             <button class="reg-btn" type="button">Logout</button>
+
             <div id="event-form" class="sign-in_2">
               <h3>Event Info</h3>
               <form>
                 <input type="text" name="eventName" placeholder="Name Of Event">
                 <textarea placeholder="Description" name="eventDescription"></textarea>
-                start date
-                <input type="date" name="startDate" value="2019-05-25">
-                end date
-                <input type="date" name="endDate" value="2019-05-25">
+                <h6>Start Date</h6>
+                <input type="date" name="startDate">
+                <h6>End Date</h6>
+                <input type="date" name="endDate">
                 <input type="text" name="eventURL" placeholder="Event URL">
                 <input type="text" name="imageURL" placeholder="Image URL">
                 <button id="event-btn" type="submit">Create Event</button>
