@@ -26,73 +26,76 @@
   <body>
 
     <div>
-      <div class="row">
-        <div class="col-sm-5 col-md-4 col-xl-3">
-          <div class="content-wrapper">
-            <h1>Logo</h1>
-            <h2><%=email%></h2>
-            <a href="/profiles"><button class="reg-btn" type="button">Profile</button></a>
-            <button class="reg-btn" type="button">Logout</button>
+      <div>
+        <div class="row">
+          <div class="col-sm-5 col-md-4 col-xl-3">
+            <div class="content-wrapper">
+              <h1>Logo</h1>
+              <h2><%=email%></h2>
+              <a href="/profiles"><button class="reg-btn" type="button">Profile</button></a>
+              <button class="reg-btn" type="button">Logout</button>
 
 
-            <!-- Create or choose a map section -->
-            <div id="choose-map" class="sign-in_2">
-              <h2>Choose Or<br> Create A Map</h2>
-              <div class="input-group mb-3">
-                <div class="drop-down-contain">
-                  <button class="drop-down">Choose</button>
+              <!-- Create or choose a map section -->
+              <div id="choose-map" class="sign-in_2">
+                <h2>Choose Or<br> Create A Map</h2>
+                <div class="input-group mb-3">
+                  <div class="drop-down-contain">
+                    <button class="drop-down">Choose</button>
 
 
-                  <% mymaps.forEach( function(e) { %>
+                    <% mymaps.forEach( function(e) { %>
 
-                  <button class="drop-down-item" mapId= <%=e.id %> ><%= e.name %></button>
+                    <button class="drop-down-item" mapId= <%=e.id %> ><%= e.name %></button>
 
-                  <% });%>
-                  <button class="drop-down-item">+ Create Map</button>
+                    <% });%>
+                    <button class="drop-down-item">+ Create Map</button>
 
+                  </div>
                 </div>
               </div>
+
+
+              <!-- Event address section -->
+              <div id="event-address" class="input-group mb-3 sign-in_2">
+                <h3>Event Address</h3>
+                <form>
+                  <input id="searchTextField" type="text" placeholder="Add address">
+                  <label id="address_text"></label>
+
+                  <script>
+
+
+                  </script>
+
+                </form>
+              </div>
+
+
+              <!-- Event info form section -->
+              <div id="event-form" class="sign-in_2">
+                <h3>Event Info</h3>
+                <form method="POST" action="/events/<%= eventId %>?_method=PUT">
+                  <input type="text" name="eventName" placeholder="Name Of Event">
+                  <textarea placeholder="Description" name="eventDescription"></textarea>
+                  <h6>Start Date</h6>
+                  <input type="date" name="startDate">
+                  <h6>End Date</h6>
+                  <input type="date" name="endDate">
+                  <input type="text" name="eventURL" placeholder="Event URL">
+                  <input type="text" name="imageURL" placeholder="Image URL">
+                  <input type="text" name="Long">
+                  <input type="text" name="Lat">
+                  <input type="text" name="mapId">
+                  <button id="event-btn" type="submit">Create Event</button>
+                </form>
+              </div>
             </div>
-
-
-            <!-- Event address section -->
-            <div id="event-address" class="input-group mb-3 sign-in_2">
-              <h3>Event Address</h3>
-              <form>
-                <input id="searchTextField" type="text" placeholder="Add address">
-                <label id="address_text"></label>
-
-                <script>
-
-
-                </script>
-
-              </form>
-            </div>
-
-
-            <!-- Event info form section -->
-            <div id="event-form" class="sign-in_2">
-              <h3>Event Info</h3>
-              <form>
-                <input type="text" name="email" placeholder="Name Of Event">
-                <textarea placeholder="Description"></textarea>
-                start date
-                <input type="date" name="start-date" value="2019-05-25">
-                end date
-                <input type="date" name="end-date" value="2019-05-25">
-                <input type="text" name="email" placeholder="Event URL">
-                <input type="text" name="email" placeholder="Image URL">
-                <button id="event-btn" type="submit">Create Event</button>
-              </form>
-            </div>
-
-
           </div>
-        </div>
 
-        <div class="col-sm-7 col-md-8 col-xl-9">
-             <div id="map"></div>
+          <div class="col-sm-7 col-md-8 col-xl-9">
+               <div id="map"></div>
+          </div>
         </div>
       </div>
     </div>
