@@ -76,7 +76,7 @@ app.get("/", (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      templateVar.allmaps = maps;
+      templateVar.allmaps =  maps;
       res.render("homepage", templateVar);
     }
   });
@@ -112,6 +112,11 @@ app.get("/login", (req, res) => {
 
 app.post("/logout", (req, res) => {
   res.clearCookie('session');
+
+  for (let key in templateVar) {
+    templateVar[key] = undefined;
+  }
+
   res.redirect('/');
 });
 
@@ -164,14 +169,7 @@ app.get("/my_maps", (req, res) => {
     if (err) {
       console.error(err);
     } else {
-
       templateVar.maps = maps;
-
-      console.log(maps);
-
-      // data looks like this:
-      //[ anonymous { id: 1, name: 'TECH', user_id: 1 },
-      // anonymous { id: 3, name: 'Toronto', user_id: 1 } ]
       res.render("my_maps", templateVar);
     }
   })

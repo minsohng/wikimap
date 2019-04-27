@@ -56,31 +56,16 @@ function addEvents(events, google){
 
     marker.addListener('click', function() {
       infowindow.open(map, marker);
-      $(document).on('click', '.info-button', function(){
-        var htmlString = editEvent();
-
-        $(this).parent().html(htmlString);
+      // $(document).on('click', map, function(){
+      //   infowindow.close();
+        // var htmlString = editEvent();
+        // console.log(htmlString);
+        // $(this).parent().html(htmlString);
       })
+    google.maps.event.addListener(map, "click", function(event) {
+      infowindow.close();
     });
+    });
+  };
 
 
-    // $('form').on('submit', function(event) {
-    // event.preventDefault();
-    // let data = $(this).serialize();
-    // $.ajax({
-    //   url: '/tweets',
-    //   method: 'POST',
-    //   data: data
-    // }).then(
-    //   (res) => {
-    //     loadTweets();
-    //     let form = document.getElementById('form');
-    //     let counter = document.getElementById('counter');
-    //     form.reset();
-    //     counter.textContent = '140';
-    //   },
-    //   (err) => { console.log('Error') }
-    // )
-  });
-
-}

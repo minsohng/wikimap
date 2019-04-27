@@ -17,7 +17,7 @@
     <script type="text/javascript" src="/scripts/events.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyKGD0KZJKeuryKROZeOvorSwd739yqO4&callback=initMap"
     async defer></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 
   </head>
 
@@ -31,7 +31,9 @@
 
             <h2><%= email %></h2>
 
-            <button class="reg-btn" type="button">Logout</button>
+            <form method="POST" action="/logout">
+              <button class="reg-btn" type="submit">Logout</button>
+            </form>
             <div class="sign-in">
               <a href="/events/new"><h1>Create Event</h1></a>
               <a href="/my_events"><h1>My Event</h1></a>
