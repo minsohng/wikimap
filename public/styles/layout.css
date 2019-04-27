@@ -107,3 +107,15 @@ div .drop-down-item {
   margin-top: 0;
   border-top: none;
 }
+
+button.event-btn {
+  width: 50%;
+}
+
+button.edit-btn {
+  width: 20%;
+}
+
+button.delete-btn {
+  width: 20%;
+}
