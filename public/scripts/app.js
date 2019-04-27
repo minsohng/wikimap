@@ -14,6 +14,7 @@ $(() => {
 
     $('.drop-down-item').hide()
 
+
     $('.drop-down').on('click', (event) => {
       $('.drop-down-item').slideToggle(400)
     })
@@ -24,4 +25,9 @@ $(() => {
       $('.event-address').slideDown(400)
     })
 
+    $('#event-btn').on('click', (event) => {
+      $.post('/', (form) => {
+        //post form information to database
+      })
+    })
 })

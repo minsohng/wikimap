@@ -280,6 +280,19 @@ app.delete("/events/:id", (req, res) => {
 });
 
 
+app.get('/my_events', (req, res) => {
+  res.render('my_events', templateVar);
+});
+
+
+app.delete('/my_events', (req, res) => {
+  res.render('my_events', templateVar);
+});
+
+
+app.get('/events/:id', (req, res) => {
+res.render('edit_events', templateVar)
+})
 
 
 app.listen(PORT, () => {

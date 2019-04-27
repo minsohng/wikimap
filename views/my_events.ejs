@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Profile</title>
+    <title>My Events</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/maps.js"></script>
     <script type="text/javascript" src="/scripts/events.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyKGD0KZJKeuryKROZeOvorSwd739yqO4&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGsfIARKGIrIMivCTGWHRYjJdEK21gwxE&callback=initMap"
     async defer></script>
 
 
@@ -28,24 +28,29 @@
         <div class="col-sm-5 col-md-4 col-xl-3">
           <div class="content-wrapper">
             <h1>Logo</h1>
-
             <h2><%= email %></h2>
-
             <button class="reg-btn" type="button">Logout</button>
-            <div class="sign-in">
-              <a href="/events/new"><h1>Create Event</h1></a>
-              <a href="/events/new"><h1>Edit Event</h1></a>
-              <a href="/maps/new"><h1>Create Map</h1></a>
-              <a href="/my_maps"><h1>My Map</h1></a>
-              <a href="/maps"><h1>All Maps</h1></a>
-            </div>
+            <div class="sign-in_2">
+              <h2>My Events</h2>
+              <button class="event-btn map-select btn btn-primary" href="#" role="button">Something</button>
+              <a href="/events/:id"><button class="edit-btn map-select btn btn-primary" role="button">Edit</button></a>
+              <button class="delete-btn map-select btn btn-primary" href="#" role="button">Delete</button>
+          </div>
           </div>
         </div>
+
+
         <div class="col-sm-7 col-md-8 col-xl-9">
              <div id="map"></div>
         </div>
+
+
       </div>
     </div>
 
+    <script>
+
+    </script>
   </body>
 </html>
+
