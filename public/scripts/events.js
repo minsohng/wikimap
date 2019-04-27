@@ -85,6 +85,7 @@ function editEvent (data){
 
 //------> function add event to the map and diusplay infowind
 function addEvents(events, google){
+
   console.log(google)
   events.forEach(event =>{
     console.log(event.latitude)

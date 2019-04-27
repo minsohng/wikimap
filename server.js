@@ -63,7 +63,8 @@ var templateVar = {
   maps: undefined,
   events: undefined,
   mymaps: undefined,
-  allmaps: undefined
+  allmaps: undefined,
+  myevents: undefined
 
 }
 
@@ -118,22 +119,7 @@ app.get("/register", (req, res) => {
   res.send("register page");
 });
 
-//view all maps
-app.get("/maps", (req, res) => {
-  //create template vars
-  // show all maps in maps table
-  // dataHelpers.getEvents((err, events) => {
-  //   if (err) {
-  //     console.error(err);
-  //   } else {
-  //     templateVar.events = events;
-  //     res.render("maps", templateVar);
-  //   }
-  // });
 
-  res.render("homepage", templateVar);
-
-});
 
 
 //create new map
@@ -192,10 +178,16 @@ app.get("/my_maps", (req, res) => {
 
 });
 
-//show map with id
+//pass events associated with mapId
 app.get("/maps/:id", (req, res) => {
 
-  res.render("maps", templateVar);
+  dataHelpers.getEvents(req.params.id, (err, events) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.json(events);
+    }
+  });
 
 });
 
@@ -203,11 +195,15 @@ app.put("/maps/:id", (req, res) => {
   if (!req.session.user_id) {
     throw new Error("You are not logged in");
   }
-  // check isLoggedin && does map associate with userid who is logged in
 
-  //edit or update map name
+  dataHelpers.updateMaps(req.params.id, req.body.mapName, (err, map) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.redirect('/my_maps');
 
-  //redirect to map with id
+    }
+  });
 });
 
 app.delete("/maps/:id", (req, res) => {
@@ -216,27 +212,20 @@ app.delete("/maps/:id", (req, res) => {
   }
   // check isLoggedin && does map associate with userid who is logged in
 
-  dataHelpers.deleteMap(req.session.user_id, req.params.id);
-
-  res.redirect('/my_maps');
-});
-
-
-app.get("/maps/:id/events", (req, res) => {
-  console.log(req.params.id);
-  dataHelpers.getEvents(req.params.id, (err, events) => {
-    if (err) {
-      console.error(err);
-    } else {
-      res.json(events);
-    }
+  dataHelpers.deleteMaps(req.session.user_id, req.params.id, () => {
+    res.redirect('/my_maps');
   });
+
 });
+
 
 
 // routes for events
 app.get("/events/new", (req, res) => {
-  console.log("in events/new");
+  if (!req.session.user_id) {
+    throw new Error ("You are not logged in");
+  }
+
 
   dataHelpers.getMyMaps(req.session.user_id, (err, maps) => {
     if (err) {
@@ -246,6 +235,48 @@ app.get("/events/new", (req, res) => {
       res.render('create_event', templateVar);
     }
   });
+});
+
+app.get("/my_events", (req, res) => {
+  if (!req.session.user_id) {
+    throw new Error ("You are not logged in");
+  }
+
+  dataHelpers.getMyEvents(req.sessions.user_id, (err, events) => {
+    if (err) {
+      console.error(err);
+    } else {
+      templateVar.myevents = events;
+      res.render("my_events", templateVar);
+    }
+  });
+
+});
+
+app.put("/events/:id", (req, res) => {
+  if (!req.session.user_id) {
+    throw new Error ("You are not logged in");
+  }
+
+  dataHelpers.updateEvents(req.params.id, req.session.user_id, eventsInfo, (err, res) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.redirect('/my_events');
+    }
+  });
+
+});
+
+app.delete("/events/:id", (req, res) => {
+  if (!req.session.user_id) {
+    throw new Error ("You are not logged in");
+  }
+
+  dataHelpers.deleteEvents(req.params.id, req.session.user_id, () => {
+    res.redirect('/my_events');
+  });
+
 });
 
 
