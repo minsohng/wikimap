@@ -19,6 +19,7 @@
     async defer></script>
 
 
+
   </head>
 
   <body>
@@ -36,23 +37,20 @@
             <div id="choose-map" class="sign-in_2">
               <h2>Choose Or<br> Create A Map</h2>
               <div class="input-group mb-3">
-                <div class="drop-down">
+                <div class="drop-down-contain">
                   <button class="drop-down">Choose</button>
                   <button class="drop-down-item">Map 1</button>
-                  <button class="drop-down-item">Map 2</button>
-                  <button class="drop-down-item">Map 3</button>
-                  <button class="drop-down-item">Map 4</button>
-                  <button class="drop-down-item">+ Create Map</button>
+                  <a href="/maps/new"><button #createMap class="drop-down-item">+ Create Map</button></a>
                 </div>
               </div>
             </div>
 
 
             <!-- Event address section -->
-            <div style="display: none;" id="event-address" class="input-group mb-3 sign-in_2">
+            <div id="event-address" class="input-group mb-3 sign-in_2">
               <h3>Event Address</h3>
               <form>
-                <input type="text" name="email" placeholder="Event Address">
+                <input type="text" placeholder="Search Box">
               </form>
             </div>
 
@@ -84,4 +82,5 @@
     </div>
 
   </body>
+
 </html>

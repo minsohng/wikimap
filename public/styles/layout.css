@@ -97,6 +97,10 @@ div .drop-down {
   text-align: left;
 }
 
+.drop-down-contain {
+  width: 100%;
+}
+
 div .drop-down-item {
   width: 100%;
   text-align: left;
