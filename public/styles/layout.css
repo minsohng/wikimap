@@ -113,6 +113,7 @@ div .drop-down-item {
   border-top: none;
 }
 
+
 button.event-btn {
   width: 50%;
 }
@@ -120,7 +121,41 @@ button.event-btn {
 button.edit-btn {
   width: 20%;
 }
-
 button.delete-btn {
   width: 20%;
 }
+
+.event_img {
+  max-width: 100px;
+  max-height: 100px;
+  margin-bottom: 5px;
+}
+
+
+.event_url {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.start_date_text{
+  font-style: italic;
+  font-size: 15px;
+  margin:0;
+
+
+}
+.end_date_text{
+  font-style: italic;
+  font-size: 15px;
+  margin:0;
+}
+.description{
+  margin: 0 ;
+}
+.description_text{
+  font-style: italic;
+  font-size: 15px;
+  margin:0;
+}
+
+
