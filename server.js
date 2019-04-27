@@ -242,7 +242,7 @@ app.get("/my_events", (req, res) => {
     throw new Error ("You are not logged in");
   }
 
-  dataHelpers.getMyEvents(req.sessions.user_id, (err, events) => {
+  dataHelpers.getMyEvents(req.session.user_id, (err, events) => {
     if (err) {
       console.error(err);
     } else {
@@ -280,14 +280,7 @@ app.delete("/events/:id", (req, res) => {
 });
 
 
-app.get('/my_events', (req, res) => {
-  res.render('my_events', templateVar);
-});
 
-
-app.delete('/my_events', (req, res) => {
-  res.render('my_events', templateVar);
-});
 
 
 app.get('/events/:id', (req, res) => {
