@@ -74,7 +74,7 @@
               <!-- Event info form section -->
               <div id="event-form" class="sign-in_2">
                 <h3>Event Info</h3>
-                <form method="POST" action="/events/<%= eventId %>?_method=PUT">
+                <form method="POST" action="/events">
                   <input type="text" name="eventName" placeholder="Name Of Event">
                   <textarea placeholder="Description" name="eventDescription"></textarea>
                   <h6>Start Date</h6>
@@ -83,9 +83,10 @@
                   <input type="date" name="endDate">
                   <input type="text" name="eventURL" placeholder="Event URL">
                   <input type="text" name="imageURL" placeholder="Image URL">
-                  <input type="text" name="Long">
-                  <input type="text" name="Lat">
-                  <input type="text" name="mapId">
+
+                  <input type="text" id="lng" name="lng">
+                  <input type="text" id="lat" name="lat">
+                  <input type="text" id="id" name="mapid">
                   <button id="event-btn" type="submit">Create Event</button>
                 </form>
               </div>
