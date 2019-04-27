@@ -11,9 +11,27 @@ function createEvent (data) {
   let $end_date = $("<p>").addClass("end_date").text(data.end_date).appendTo($event);
   let $picture = $("<img>").addClass("event_img").attr("src",data.picture).appendTo($event);
   let $description = $("<p>").addClass("description").text(data.description).appendTo($event);
+  let $edit = $(`<input type="button" value="Edit" class="info-button"/>`).appendTo($event);
   $event.appendTo($map);
   return $event.prop('outerHTML');
 };
+
+function editEvent (data){
+  let $map = $('#map');
+  let $form = $("<div>").addClass("content");
+  let $edit_title = $("<h3>").addClass("edit_title").text("Edit your event data:").appendTo($form);
+  let $form_latitude = $("<input>").addClass("form_latitude").appendTo($form);
+  let $form_longitude = $("<input type: 'value', id: 'flong', placeholder: 'Longitude'/>").appendTo($form);
+  let $form_name = $("<input type: 'text', id: 'fname', Event name: 'name', placeholder: 'Event Name'/>").appendTo($form);
+  let $form_start = $("<input>").addClass("form_start").appendTo($form);
+  let $form_end = $("<input>").addClass("form_end").appendTo($form);
+  let $form_url = $("<input>").addClass("form_url").appendTo($form);
+  let $form_picture = $("<input>").addClass("form_picture").appendTo($form);
+  let $f_description = $("<textarea rows: 'px', cols: '27px',type: 'text',id: 'description', name: 'desc', placeholder: 'Event description' />").appendTo($form);
+  let $submit_bttn = $("<input type: 'button', id: 'submit', placeholder: 'Submit' />").appendTo($form);
+  $form.appendTo($map);
+  return $form.prop('outerHTML');
+}
 //------> hardcoded database
 const data = [
 
@@ -80,10 +98,25 @@ function addEvents(events, google){
       content: eventContent,
     });
 
-    marker.addListener('click', function() {
+    marker.addListener('click', function(e) {
       infowindow.open(map, marker);
-
+      $(document).on('click', '.info-button', function(){
+        var htmlString = editEvent();
+        console.log(htmlString)
+        $(this).parent().html(htmlString)
+      })
     });
+
+
+    //  $('#button').on('click',function(){
+    //   console.log('click');
+
+    //   let form = new google.maps.InfoWindow({
+    //     content: formData,
+    //     });
+    //   infowindow.open(map, formData);
+    // });
+
 
   })
 }
