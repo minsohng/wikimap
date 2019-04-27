@@ -65,7 +65,8 @@ var templateVar = {
   mymaps: undefined,
   allmaps: undefined,
   myevents: undefined,
-  eventId: undefined
+  eventId: undefined,
+  eventInfo: undefined
 }
 
 // Home page
@@ -253,13 +254,46 @@ app.get("/my_events", (req, res) => {
   });
 });
 
+app.get('/events/:id', (req, res) => {
+  if (!req.session.user_id) {
+    throw new Error ("You are not logged in");
+  }
+
+  dataHelpers.getEventsInfo(req.params.id, (err, info) => {
+    if (err) {
+      console.error(err);
+    } else {
+      templateVar.eventInfo = info;
+      templateVar.eventId = req.params.id;
+      console.log(info)
+
+       res.render('edit_events', templateVar);
+    }
+  });
+
+})
+
+app.post("/events", (req, res) => {
+
+});
+
 
 app.put("/events/:id", (req, res) => {
   if (!req.session.user_id) {
     throw new Error ("You are not logged in");
   }
+  const eventsInfo = {
+    // latitude: req.body.latitude,
+    // longitude: req.body.longtitude,
+    name: req.body.name,
+    description: req.body.description,
+    start_date: req.body.start_date,
+    end_date: req.body.end_date,
+    url: req.body.url,
+    img_url: req.body.img_url
+  }
 
-  dataHelpers.updateEvents(req.params.id, req.session.user_id, eventsInfo, (err, res) => {
+  dataHelpers.updateEvents(req.params.id, req.session.user_id, eventsInfo, (err, result) => {
     if (err) {
       console.error(err);
     } else {
@@ -282,13 +316,7 @@ app.delete("/events/:id", (req, res) => {
 });
 
 
-app.get('/events/:id', (req, res) => {
-  if (!req.session.user_id) {
-    throw new Error ("You are not logged in");
-  }
-  templateVar.eventId = req.params.id
-  res.render('edit_events', templateVar)
-})
+
 
 
 app.listen(PORT, () => {
