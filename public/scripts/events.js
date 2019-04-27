@@ -3,13 +3,17 @@
 function createEvent (data) {
   let $map = $('#map');
   let $event = $("<div>").addClass("content");
-  let $latitude = $("<address>").addClass("latitude").text(data.latitude).appendTo($event);
-  let $longitude = $("<address>").addClass("longitude").val(data.longitude).appendTo($event);
   let $name = $("<h1>").addClass("event_name").text(data.name).appendTo($event);
+  let $picture = $("<img>").addClass("event_img").attr("src",data.img_url).appendTo($event);
+  let $address = $("#address_text").appendTo($event);
   let $url = $("<a>").addClass("event_url").attr("href", data.url).text(data.url).appendTo($event);
-  let $start_date = $("<p>").addClass("start_date").text(data.start_date).appendTo($event);
-  let $end_date = $("<p>").addClass("end_date").text(data.end_date).appendTo($event);
-  let $picture = $("<img>").addClass("event_img").attr("src",data.picture).appendTo($event);
+  let $latitude = $("<address>").addClass("latitude").text(data.latitude);
+  let $longitude = $("<address>").addClass("longitude").val(data.longitude);
+  let $start_date_text = $("<p>").addClass("start_date_text").text('Start date: ').appendTo($event);
+  let $start_date = $("<p>").addClass("start_date").text(moment(data.start_date).format('LLL')).appendTo($event);
+  let $end_date_text = $("<p>").addClass("end_date_text").text('End date: ').appendTo($event);
+  let $end_date = $("<p>").addClass("end_date").text(moment(data.end_date).format('LLL')).appendTo($event);
+  let $description_text = $("<p>").addClass("description_text").text('Description: ').appendTo($event);
   let $description = $("<p>").addClass("description").text(data.description).appendTo($event);
   let $edit = $(`<input type="button" value="Edit" class="info-button"/>`).appendTo($event);
   $event.appendTo($map);
