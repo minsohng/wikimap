@@ -272,6 +272,30 @@ app.get('/events/:id', (req, res) => {
 })
 
 app.post("/events", (req, res) => {
+  if (!req.session.user_id) {
+    throw new Error ("You are not logged in");
+  }
+  const eventsInfo = {
+    latitude: req.body.lat,
+    longitude: req.body.lng,
+    name: req.body.eventName,
+    url: req.body.eventURL,
+    img_url: req.body.imageURL,
+    start_date: req.body.startDate,
+    end_date: req.body.endDate,
+    description: req.body.eventDescription
+  };
+
+  console.log(eventsInfo)
+  console.log("mapid",req.body.mapid)
+
+  dataHelpers.setEvents(req.session.user_id, req.body.mapid, eventsInfo, (err, result ) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.redirect('/profiles');
+    }
+  })
 
 });
 

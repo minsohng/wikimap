@@ -4,13 +4,13 @@ $(() => {
   // Ajax Request for mapId and run function
   $('.map-select').on('click', (event) => {
     $.get(`/maps/${event.target.attributes.mapId.value}`, (map_event) => {
+      console.log(map_event)
       initMap(map_event);
     })
   })
 
 
   // Drop down list for selecting a map
-
 
     $('.drop-down-item').hide()
 
@@ -36,5 +36,10 @@ $(() => {
         alert('What Are You Doing?')
         return;
       }
+    })
+
+    $('.drop-down-item').on('click', event => {
+      $target = $(event.target);
+      $('#id').val($target.attr('mapId'))
     })
 })
