@@ -16,7 +16,10 @@ function initMap(events) {
 
 function initialize() {
   var input = document.getElementById('searchTextField');
-  var address = new google.maps.places.Autocomplete(input);
+  var options = {
+    componentRestrictions: {country: "ca"}
+ };
+  var address = new google.maps.places.Autocomplete(input, options);
   google.maps.event.addListener(address, 'place_changed', function(){
     var place = address.getPlace();
     var location = "<b>Address: </b>" + place.formatted_address + "</br>";
