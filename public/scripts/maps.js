@@ -7,7 +7,9 @@ function initMap() {
         zoom: 12
         });
       addEvents(data, google);
+
   }
+
 
 
 $(document).ready(function(){

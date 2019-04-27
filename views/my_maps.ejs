@@ -31,16 +31,23 @@
 
               <% maps.forEach( function(e) { %>
 
-              <button contenteditable class="map-select btn btn-primary btn-block"><%=e.name%></button>
 
+                <% if (e.user_id === user_id) { %>
+                 <button contenteditable class="map-select btn btn-primary btn-block" mapId=<%=e.id%>><%=e.name%></button>
+                <% } %>
               <% }); -%>
-
             </div>
             <div class="sign-in_2">
               <h2>Contributed Map</h2>
-              <button contenteditable class="map-select btn btn-primary btn-block">Tech</button>
-              <button contenteditable class="map-select btn btn-primary btn-block">Marketing</button>
+
+              <% maps.forEach( function(e) { %>
+                <% if (e.user_id !== user_id) { %>
+                  <button contenteditable class="map-select btn btn-primary btn-block" mapId=<%=e.id%>><%=e.name%></button>
+                <%} %>
+              <% }); -%>
             </div>
+
+
           </div>
         </div>
         <div class="col-sm-7 col-md-8 col-xl-9">

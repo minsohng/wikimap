@@ -58,10 +58,12 @@ app.use("/api/events", eventsRoutes(knex));
 
 
 var templateVar = {
+  user_id: undefined,
   email: undefined,
   maps: undefined,
   events: undefined,
-  mymaps: undefined
+  mymaps: undefined,
+  allmaps: undefined
 
 }
 
@@ -72,7 +74,7 @@ app.get("/", (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      templateVar.maps = maps;
+      templateVar.allmaps = maps;
       res.render("homepage", templateVar);
     }
   });
@@ -95,6 +97,7 @@ app.get("/profiles", (req, res) => {
 //login page
 app.get("/login", (req, res) => {
   req.session.user_id =  1;
+  templateVar.user_id = req.session.user_id;
   dataHelpers.getEmail(req.session.user_id, (err, email) => {
     if (err) {
       console.error(err);
@@ -170,12 +173,14 @@ app.get("/my_maps", (req, res) => {
     throw new Error("You are not logged in");
   }
   //does MY maps ONLY at the moment
-  dataHelpers.getMyMaps(req.session.user_id, (err, maps) => {
+  dataHelpers.getContributedMaps(req.session.user_id, (err, maps) => {
     if (err) {
       console.error(err);
     } else {
+
       templateVar.maps = maps;
 
+      console.log(maps);
 
       // data looks like this:
       //[ anonymous { id: 1, name: 'TECH', user_id: 1 },
@@ -238,7 +243,6 @@ app.get("/events/new", (req, res) => {
       console.error(err);
     } else {
       templateVar.mymaps = maps;
-      console.log(maps)
       res.render('create_event', templateVar);
     }
   });
