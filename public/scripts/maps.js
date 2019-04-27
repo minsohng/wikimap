@@ -1,6 +1,9 @@
 //------> function create initial map
 let map;
 let map1;
+
+
+
 function initMap(events) {
   if (!events) {
     events = [];
@@ -25,6 +28,7 @@ function initialize() {
     var location = "<b>Address: </b>" + place.formatted_address + "</br>";
     var lat = "<b>Latitude: </b>"+ place.geometry.location.lat() + "</br>";
     var lng = "<b>Longitude: </b>"+ place.geometry.location.lng() + "</br>";
+    console.log(place.geometry.location.lat(), place.geometry.location.lng())
     document.getElementById('address_text').innerHTML = location;
   })
   initMap()
