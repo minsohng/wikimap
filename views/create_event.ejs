@@ -16,8 +16,7 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/maps.js"></script>
     <script type="text/javascript" src="/scripts/events.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGsfIARKGIrIMivCTGWHRYjJdEK21gwxE&callback=initMap"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyKGD0KZJKeuryKROZeOvorSwd739yqO4&libraries=places&callback=initialize" async defer></script>
 
 
 
@@ -51,7 +50,14 @@
             <div id="event-address" class="input-group mb-3 sign-in_2">
               <h3>Event Address</h3>
               <form>
-                <input type="text" placeholder="Search Box">
+                <input id="searchTextField" type="text" placeholder="Add address">
+                <label id="address_text"></label>
+
+                <script>
+
+
+                </script>
+
               </form>
             </div>
 
