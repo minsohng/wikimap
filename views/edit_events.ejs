@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>My Events</title>
+    <title>Edit Events</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/maps.js"></script>
     <script type="text/javascript" src="/scripts/events.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGsfIARKGIrIMivCTGWHRYjJdEK21gwxE&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyKGD0KZJKeuryKROZeOvorSwd739yqO4&callback=initMap"
     async defer></script>
 
 
@@ -35,7 +35,7 @@
 
             <div id="event-form" class="sign-in_2">
               <h3>Event Info</h3>
-              <form>
+              <form method="POST" action="/events/<%= eventId %>?_method=PUT">
                 <input type="text" name="eventName" placeholder="Name Of Event">
                 <textarea placeholder="Description" name="eventDescription"></textarea>
                 <h6>Start Date</h6>

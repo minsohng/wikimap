@@ -64,8 +64,8 @@ var templateVar = {
   events: undefined,
   mymaps: undefined,
   allmaps: undefined,
-  myevents: undefined
-
+  myevents: undefined,
+  eventId: undefined
 }
 
 // Home page
@@ -237,6 +237,7 @@ app.get("/events/new", (req, res) => {
   });
 });
 
+
 app.get("/my_events", (req, res) => {
   if (!req.session.user_id) {
     throw new Error ("You are not logged in");
@@ -250,8 +251,8 @@ app.get("/my_events", (req, res) => {
       res.render("my_events", templateVar);
     }
   });
-
 });
+
 
 app.put("/events/:id", (req, res) => {
   if (!req.session.user_id) {
@@ -268,6 +269,7 @@ app.put("/events/:id", (req, res) => {
 
 });
 
+
 app.delete("/events/:id", (req, res) => {
   if (!req.session.user_id) {
     throw new Error ("You are not logged in");
@@ -280,11 +282,9 @@ app.delete("/events/:id", (req, res) => {
 });
 
 
-
-
-
 app.get('/events/:id', (req, res) => {
-res.render('edit_events', templateVar)
+  templateVar.eventId = req.params.id
+  res.render('edit_events', templateVar)
 })
 
 
