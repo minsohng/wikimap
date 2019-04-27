@@ -16,10 +16,11 @@ function createEvent (data) {
   return $event.prop('outerHTML');
 };
 
+
 function editEvent (data){
   let $map = $('#map');
   let $form = $("<div>").addClass("content");
-  let $edit_title = $("<h3>").addClass("edit_title").text("Edit your event data:").appendTo($form);
+  let $edit_title = $("<h4>").addClass("edit_title").text("Edit your event data:").appendTo($form);
   let $form_latitude = $("<input>").addClass("form_latitude").appendTo($form);
   let $form_longitude = $("<input type: 'value', id: 'flong', placeholder: 'Longitude'/>").appendTo($form);
   let $form_name = $("<input type: 'text', id: 'fname', Event name: 'name', placeholder: 'Event Name'/>").appendTo($form);
