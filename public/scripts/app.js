@@ -1,7 +1,7 @@
 $(() => {
 
   // Ajax Request for mapId and run function
-  $('map-select').on('click', (event) => {
+  $('.map-select').on('click', (event) => {
     $.get(`/maps/${event.target.attributes.mapId.value}`, (map_event) => {
       initMap(map_event)
     })
