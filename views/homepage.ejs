@@ -41,13 +41,16 @@
             <% } -%>
             <div class="sign-in">
               <h3>Choose A Map</h3>
-              <% allmaps.forEach( function(e) { %>
+              <% if (allmaps !== undefined) { -%>
+
+                <% allmaps.forEach( function(e) { %>
 
 
-                <button class="map-select btn btn-primary btn-block" href="#" role="button" mapId= <%=e.id%> > <%= e.name %></button>
+                  <button class="map-select btn btn-primary btn-block" href="#" role="button" mapId= <%=e.id%> > <%= e.name %></button>
 
 
-              <% }); -%>
+                <% }); -%>
+              <% } -%>
           </div>
 
           </div>

@@ -31,7 +31,9 @@
 
             <h2><%= email %></h2>
 
-            <button class="reg-btn" type="button">Logout</button>
+            <form method="POST" action="/logout">
+              <button class="reg-btn" type="submit">Logout</button>
+            </form>
             <div class="sign-in">
               <a href="/events/new"><h1>Create Event</h1></a>
               <a href="/my_events"><h1>My Event</h1></a>
