@@ -13,6 +13,10 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/maps.js"></script>
+    <script type="text/javascript" src="/scripts/events.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGsfIARKGIrIMivCTGWHRYjJdEK21gwxE&callback=initMap"
+    async defer></script>
 
 
   </head>
@@ -56,16 +60,5 @@
       </div>
     </div>
 
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 49.273099, lng: -123.119668},
-          zoom: 12
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUo5w2n2O-6sX8xCptTj9XzgiE1v_CyKw&callback=initMap"
-    async defer></script>
   </body>
 </html>
