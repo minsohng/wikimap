@@ -17,7 +17,7 @@
     <script type="text/javascript" src="/scripts/events.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyKGD0KZJKeuryKROZeOvorSwd739yqO4&callback=initMap"
     async defer></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 
   </head>
 
@@ -37,10 +37,12 @@
               <% myevents.forEach( function(e) { %>
 
                 <button class="event-btn map-select btn btn-primary" href="#" role="button"><%= e.name%></button>
+
                 <a href="/events/<%= e.id %>"><button eventsId= "<%= e.id %>" class="edit-btn map-select btn btn-primary" role="button">Edit</button></a>
 
                 <form style="display: inline-block;" method="POST" action="/events/<%= e.id %>?_method=DELETE">
                 <button eventsId= "<%= e.id %> "class="delete-btn map-select btn btn-primary" href="#" role="button">Delete</button>
+
                 </form>
 
               <% }); -%>
