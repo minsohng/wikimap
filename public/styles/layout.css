@@ -122,7 +122,44 @@ button.edit-btn {
 }
 
 button.delete-btn {
-  width: 20%;
+
 }
 
+.event_img {
+  max-width: 100px;
+  max-height: 100px;
+  margin-bottom: 5px;
+}
 
+.event_url {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.start_date_text {
+  font-style: italic;
+  font-size: 15px;
+  margin: 0;
+}
+
+.end_date_text {
+  font-style: italic;
+  font-size: 15px;
+  margin: 0;
+}
+
+.description {
+  margin: 0;
+}
+
+.description_text {
+  font-style: italic;
+  font-size: 15px;
+  margin: 0;
+}
+
+#logo {
+  margin-bottom: 20px;
+  height: 60px;
+  margin-left: 0;
+}
