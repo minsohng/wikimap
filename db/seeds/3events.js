@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
         knex('events').insert({
           id:1,
           latitude:49.2827,
-          longitude:123.1207,
+          longitude:-123.1207,
           name: 'Vancouver X',
           start_date: '2019-01-01',
           end_date:'2019-01-02',
@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
         knex('events').insert({
           id:2,
           latitude:43.6532,
-          longitude:79.3832,
+          longitude:-79.3832,
           name: 'Toronto X',
           start_date: '2019-02-01',
           end_date:'2019-03-02',
@@ -33,7 +33,7 @@ exports.seed = function(knex, Promise) {
         knex('events').insert({
           id:3,
           latitude:49.2813295,
-          longitude:123.114602,
+          longitude:-123.114602,
           name: 'Lighthouse Labs',
           start_date: '2019-03-01',
           end_date:'2019-05-02',
@@ -47,7 +47,7 @@ exports.seed = function(knex, Promise) {
         knex('events').insert({
           id:4,
           latitude:49.527,
-          longitude:123.107,
+          longitude:-123.107,
           name: 'Something',
           start_date: '2019-01-01',
           end_date:'2019-01-02',
