@@ -42,7 +42,7 @@ function editEvent (data){
 //------> function add event to the map and diusplay infowind
 function addEvents(events, google){
   events.forEach(event =>{
-    console.log(event.latitude)
+
     let marker = new google.maps.Marker({
       position: {lat: Number(event.latitude), lng: Number(event.longitude)},
       map: map,
@@ -58,7 +58,7 @@ function addEvents(events, google){
       infowindow.open(map, marker);
       $(document).on('click', '.info-button', function(){
         var htmlString = editEvent();
-        console.log(htmlString);
+
         $(this).parent().html(htmlString);
       })
     });
