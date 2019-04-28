@@ -163,3 +163,12 @@ button.delete-btn {
   height: 60px;
   margin-left: 0;
 }
+
+/* Banana Sandwich */
+.gm-style-iw gm-style-iw-c {
+  max-width: 300px;
+}
+
+.gm-style-iw-d {
+  max-width: 300px;
+}

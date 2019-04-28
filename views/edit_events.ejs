@@ -15,8 +15,8 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/maps.js"></script>
     <script type="text/javascript" src="/scripts/events.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyKGD0KZJKeuryKROZeOvorSwd739yqO4&callback=initMap"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyKGD0KZJKeuryKROZeOvorSwd739yqO4&libraries=places&callback=initialize" async defer></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 
   </head>
@@ -31,8 +31,22 @@
           <div class="content-wrapper">
             <h1>Logo</h1>
             <h2><%= email %></h2>
-            <a href="/profiles"><button class="reg-btn" type="button">Profile</button></a>
-            <button class="reg-btn" type="button">Logout</button>
+
+                          <!-- Event address section -->
+              <div id="event-address" class="input-group mb-3 sign-in_2">
+                <h3>Event Address</h3>
+                <form>
+                  <input id="searchTextField" type="text" placeholder="Add address">
+                  <label id="address_text"></label>
+
+                  <script>
+
+
+                  </script>
+
+                </form>
+              </div>
+
 
             <div id="event-form" class="sign-in_2">
               <h3>Edit Event Info</h3>
@@ -45,7 +59,9 @@
                 <input type="date" name="end_date" value="<%= eventInfo[0].end_date%>">
                 <input type="text" name="url" value="<%= eventInfo[0].url%>">
                 <input type="text" name="img_url" value="<%= eventInfo[0].img_url%>">
-                <button id="event-btn" type="submit">Create Event</button>
+                <input type="text" id="lng" name="lng">
+                <input type="text" id="lat" name="lat">
+                <button id="event-btn" type="submit">Edit Event</button>
               </form>
             </div>
 

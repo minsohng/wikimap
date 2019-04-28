@@ -110,6 +110,7 @@ app.get("/login", (req, res) => {
   });
 });
 
+
 app.post("/logout", (req, res) => {
   res.clearCookie('session');
 
@@ -305,8 +306,8 @@ app.put("/events/:id", (req, res) => {
     throw new Error ("You are not logged in");
   }
   const eventsInfo = {
-    // latitude: req.body.latitude,
-    // longitude: req.body.longtitude,
+    latitude: req.body.lat,
+    longitude: req.body.lng,
     name: req.body.name,
     description: req.body.description,
     start_date: req.body.start_date,
