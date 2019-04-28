@@ -267,6 +267,23 @@ app.get('/events/:id', (req, res) => {
     if (err) {
       console.error(err);
     } else {
+      console.log("info", info)
+
+      res.json(info);
+    }
+  });
+
+})
+
+app.get('/events/:id/edit', (req, res) => {
+  if (!req.session.user_id) {
+    throw new Error ("You are not logged in");
+  }
+
+  dataHelpers.getEventsInfo(req.params.id, (err, info) => {
+    if (err) {
+      console.error(err);
+    } else {
       templateVar.eventInfo = info;
       templateVar.eventId = req.params.id;
       console.log(info)

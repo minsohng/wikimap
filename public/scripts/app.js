@@ -9,6 +9,14 @@ $(() => {
     })
   })
 
+  $('.event-btn').on('click', (event) => {
+    $.get(`/events/${event.target.attributes.eventsId.value}`, (one_map_event) => {
+      console.log(one_map_event)
+      initMap(one_map_event);
+    })
+
+  })
+
   // Drop down list for selecting a map
 
     $('.drop-down-item').hide()
