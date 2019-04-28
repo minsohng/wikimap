@@ -15,7 +15,8 @@ function createEvent (data) {
   let $end_date = $("<p>").addClass("end_date").text(moment(data.end_date).format('LLL')).appendTo($event);
   let $description_text = $("<p>").addClass("description_text").text('Description: ').appendTo($event);
   let $description = $("<p>").addClass("description").text(data.description).appendTo($event);
-  let $edit = $(`<input type="button" value="Edit" class="info-button"/>`).appendTo($event);
+  let $link = $('<a>').attr('href', '/my_events').appendTo($event);
+  let $edit = $(`<button>`).text('Edit').addClass('info_button').appendTo($link);
   $event.appendTo($map);
   return $event.prop('outerHTML');
 };
@@ -37,20 +38,22 @@ function addEvents(events, google){
     let eventContent = createEvent(event);
     var infowindow = new google.maps.InfoWindow({
       content: eventContent,
+      maxWidth: 300
     });
 
     marker.addListener('click', function() {
       infowindow.open(map, marker);
-      // $(document).on('click', map, function(){
-      //   infowindow.close();
-        // var htmlString = editEvent();
-        // console.log(htmlString);
-        // $(this).parent().html(htmlString);
-      })
+      // $('.info-button').on('click', map, function(){
+      // //   infowindow.close();
+      //   // var htmlString = editEvent();
+      //   // console.log(htmlString);
+      //   window.location.href='/edit_events';
+      // })
     google.maps.event.addListener(map, "click", function(event) {
       infowindow.close();
     });
     });
-  };
+  });
+}
 
 

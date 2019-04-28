@@ -9,7 +9,6 @@ $(() => {
     })
   })
 
-
   // Drop down list for selecting a map
 
     $('.drop-down-item').hide()
