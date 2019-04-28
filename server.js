@@ -110,6 +110,7 @@ app.get("/login", (req, res) => {
   });
 });
 
+
 app.post("/logout", (req, res) => {
   res.clearCookie('session');
 
