@@ -25,7 +25,7 @@
 
     <div>
       <div class="row">
-        <div class="col-sm-5 col-md-5 col-lg-5 col-xl-4">
+        <div class="col-sm-5 col-md-4 col-lg-5 col-xl-4">
           <div class="content-wrapper">
             <h1>Logo</h1>
             <h2><%= email %></h2>
@@ -38,7 +38,7 @@
 
               <% myevents.forEach( function(e) { %>
 
-                <button class="event-btn map-select btn btn-primary" href="#" role="button"><%= e.name%></button>
+                <button class="event-btn event-select btn" href="#" role="button"><%= e.name%></button>
 
                 <a href="/events/<%= e.id %>"><button eventsId= "<%= e.id %>" class="edit-btn map-select btn btn-primary" role="button">Edit</button></a>
 
@@ -53,7 +53,7 @@
         </div>
 
 
-        <div class="col-sm-7 col-md-7 col-lg-7 col-xl-8">
+        <div class="col-sm-7 col-md-8 col-lg-7 col-xl-8">
              <div id="map"></div>
         </div>
 

@@ -12,6 +12,7 @@ $(() => {
   // Drop down list for selecting a map
 
     $('.drop-down-item').hide()
+    $('#event-form').hide()
 
 
     $('.drop-down').on('click', event => {
@@ -40,6 +41,11 @@ $(() => {
     $('.drop-down-item').on('click', event => {
       $target = $(event.target);
       $('#id').val($target.attr('mapId'))
+    })
+
+    $('#searchTextField').on('change', (event) => {
+      $('#event-address').slideUp(400)
+      $('#event-form').slideDown(400)
     })
 
 })

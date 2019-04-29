@@ -62,12 +62,13 @@ var templateVar = {
   email: undefined,
   maps: undefined,
   events: undefined,
-  mymaps: undefined,
   allmaps: undefined,
   myevents: undefined,
   eventId: undefined,
   eventInfo: undefined
 }
+
+
 
 // Home page
 app.get("/", (req, res) => {
@@ -98,15 +99,19 @@ app.get("/profiles", (req, res) => {
 
 //login page
 app.get("/login", (req, res) => {
-  req.session.user_id =  1;
-  templateVar.user_id = req.session.user_id;
-  dataHelpers.getEmail(req.session.user_id, (err, email) => {
-    if (err) {
-      console.error(err);
-    } else {
-      templateVar.email = email;
-      res.render("login", templateVar);
-    }
+  res.render("login", templateVar);
+});
+
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  templateVar.email = email;
+
+  dataHelpers.getUserId(email, (err, userId) => {
+    console.log(userId)
+     req.session.user_id = userId[0].id;
+     templateVar.user_id = req.session.user_id;
+     console.log(templateVar)
+     res.redirect("/");
   });
 });
 
@@ -227,11 +232,11 @@ app.get("/events/new", (req, res) => {
   }
 
 
-  dataHelpers.getMyMaps(req.session.user_id, (err, maps) => {
+  dataHelpers.getAllMaps((err, maps) => {
     if (err) {
       console.error(err);
     } else {
-      templateVar.mymaps = maps;
+      templateVar.allmaps = maps;
       res.render('create_event', templateVar);
     }
   });
