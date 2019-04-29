@@ -111,7 +111,7 @@ app.post("/login", (req, res) => {
      req.session.user_id = userId[0].id;
      templateVar.user_id = req.session.user_id;
      console.log(templateVar)
-     res.redirect("/");
+     res.redirect("/profiles");
   });
 });
 
