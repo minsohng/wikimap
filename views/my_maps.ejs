@@ -30,7 +30,7 @@
       <div class="row">
         <div class="col-sm-5 col-md-4 col-xl-3">
           <div class="content-wrapper">
-             <img src="https://github.com/minsohng/wikimap/blob/Diana7/img/Screen%20Shot%202019-04-27%20at%202.10.00%20PM.png?raw=true" alt="Logo" id='logo'></img>
+             <a href="/"><img src="https://github.com/minsohng/wikimap/blob/Diana7/img/Screen%20Shot%202019-04-27%20at%202.10.00%20PM.png?raw=true" alt="Logo" id='logo'></img></a>
             <h2><%= email %></h2>
             <a href="/profiles"><button class="reg-btn" type="button">Profile</button></a>
             <form class="delete-btn" method="POST" action="/logout">
@@ -41,10 +41,8 @@
 
               <% maps.forEach( function(e) { %>
                 <% if (e.user_id === user_id) { %>
-                 <button style="display: inline-block; width: 70%;"contenteditable class="map-select btn btn-primary btn-block" mapId=<%=e.id%>><%=e.name%></button>
-                 <form class="delete-btn" method="POST" action="/maps/<%= e.id %>?_method=DELETE">
-                 <button eventsId= "<%= e.id %> "class="delete-btn map-select btn btn-primary"role="button">Delete</button>
-                </form>
+                 <button style="display: inline-block; width: 100%;"contenteditable class="map-select btn btn-primary btn-block" mapId=<%=e.id%>><%=e.name%></button>
+
                 <% } %>
               <% }); -%>
             </div>

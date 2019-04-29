@@ -44,7 +44,7 @@ textarea {
   resize: none;
   outline: none;
   margin-top: 15px;
-  height: 100px;
+  height: 80px;
 }
 
 .login-btn, .reg-btn {
@@ -89,6 +89,7 @@ html, body {
 }
 
 button.map-select {
+  outline: none;
   text-align: left;
   border: 1px solid #444;
   background-color: transparent;
