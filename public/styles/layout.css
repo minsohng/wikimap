@@ -97,6 +97,11 @@ button.map-select {
   padding: 20px 10px;
 }
 
+button.map-select:hover {
+  background-color: #444;
+  border: 1px solid #444;
+}
+
 div .drop-down {
   width: 100%;
   text-align: left;
@@ -118,10 +123,6 @@ button.event-btn {
 }
 
 button.edit-btn {
-  width: 20%;
-}
-
-button.delete-btn {
   width: 20%;
 }
 
@@ -164,11 +165,44 @@ button.delete-btn {
   margin-left: 0;
 }
 
-/* Banana Sandwich */
 .gm-style-iw gm-style-iw-c {
   max-width: 300px;
 }
 
 .gm-style-iw-d {
   max-width: 300px;
+}
+
+#lng {
+  display: none;
+}
+
+#lat {
+  display: none;
+}
+
+#id {
+  display: none;
+}
+
+.logout-btn {
+  display: inline-block;
+}
+
+form.delete-btn {
+  display: inline-block;
+}
+
+.sign-in h1 {
+  color: #444;
+}
+
+.sign-in h1:hover {
+  color: #777;
+  text-decoration: none;
+}
+
+.sign-in a:hover {
+  color: #777;
+  text-decoration: none;
 }

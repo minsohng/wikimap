@@ -21,16 +21,16 @@
 
   </head>
 
-  <body>
+  <body class="main-body">
 
     <div>
       <div class="row">
-        <div class="col-sm-5 col-md-4 col-xl-3">
+        <div class="col-sm-5 col-md-5 col-lg-5 col-xl-4">
           <div class="content-wrapper">
             <h1>Logo</h1>
             <h2><%= email %></h2>
              <a href="/profiles"><button class="reg-btn" type="button">Profile</button></a>
-             <form method="POST" action="/logout">
+             <form class="logout-btn" method="POST" action="/logout">
               <button class="reg-btn" type="button">Logout</button>
              </form>
             <div class="sign-in_2">
@@ -42,7 +42,7 @@
 
                 <a href="/events/<%= e.id %>"><button eventsId= "<%= e.id %>" class="edit-btn map-select btn btn-primary" role="button">Edit</button></a>
 
-                <form style="display: inline-block;" method="POST" action="/events/<%= e.id %>?_method=DELETE">
+                <form class="delete-btn" method="POST" action="/events/<%= e.id %>?_method=DELETE">
                 <button eventsId= "<%= e.id %> "class="delete-btn map-select btn btn-primary" href="#" role="button">Delete</button>
 
                 </form>
@@ -53,7 +53,7 @@
         </div>
 
 
-        <div class="col-sm-7 col-md-8 col-xl-9">
+        <div class="col-sm-7 col-md-7 col-lg-7 col-xl-8">
              <div id="map"></div>
         </div>
 

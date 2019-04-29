@@ -41,4 +41,5 @@ $(() => {
       $target = $(event.target);
       $('#id').val($target.attr('mapId'))
     })
+
 })

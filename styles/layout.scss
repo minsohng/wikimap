@@ -96,6 +96,7 @@ html, body {
 
 // Homepage Styling
 
+
 button.map-select {
   text-align: left;
   border: 1px solid #444;
@@ -103,6 +104,11 @@ button.map-select {
   color: #444;
   border-radius: 0px;
   padding: 20px 10px;
+}
+
+button.map-select:hover {
+  background-color: #444;
+  border: 1px solid #444;
 }
 
 // New Event
@@ -123,17 +129,16 @@ div .drop-down-item {
   border-top: none;
 }
 
+
 button.event-btn {
   width: 50%
 }
+
 
 button.edit-btn {
   width: 20%;
 }
 
-button.delete-btn {
-  width: 20%
-}
 
 .event_img {
   max-width: 100px;
@@ -151,34 +156,80 @@ button.delete-btn {
   font-style: italic;
   font-size: 15px;
   margin:0;
-
-
 }
+
+
 .end_date_text{
   font-style: italic;
   font-size: 15px;
   margin:0;
 }
+
+
 .description{
   margin: 0 ;
 }
+
+
 .description_text{
   font-style: italic;
   font-size: 15px;
   margin:0;
 }
 
+
 #logo {
   margin-bottom: 20px;
   height: 60px ;
   margin-left:0;
 }
-/* Banana Sandwich */
+
 
 .gm-style-iw gm-style-iw-c{
   max-width: 300px;
 }
 
+
 .gm-style-iw-d {
   max-width: 300px;
+}
+
+
+#lng {
+  display: none;
+}
+
+
+#lat {
+  display: none;
+}
+
+
+#id {
+  display: none;
+}
+
+.logout-btn {
+  display: inline-block;
+}
+
+form.delete-btn {
+  display: inline-block;
+}
+
+
+// Profile Page Styling
+
+.sign-in h1 {
+  color: #444
+}
+
+.sign-in h1:hover {
+  color: #777;
+  text-decoration: none;
+}
+
+.sign-in a:hover {
+  color: #777;
+  text-decoration: none;
 }
