@@ -44,6 +44,10 @@ function addEvents(events, google){
 
     marker.addListener('click', function() {
       infowindow.open(map, marker);
+    });
+
+
+
       // $('.info-button').on('click', map, function(){
       // //   infowindow.close();
       //   // var htmlString = editEvent();
@@ -53,7 +57,7 @@ function addEvents(events, google){
     google.maps.event.addListener(map, "click", function(event) {
       infowindow.close();
     });
-    });
+
   });
 }
 
