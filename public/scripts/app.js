@@ -10,9 +10,9 @@ $(() => {
   })
 
   $('.event-btn').on('click', (event) => {
-    $.get(`/events/${event.target.attributes.eventsId.value}`, (one_map_event) => {
-      console.log(one_map_event)
-      initMap(one_map_event);
+    $.get(`/events/${event.target.attributes.eventsId.value}`, (map_event) => {
+      console.log(map_event)
+      initMap(map_event);
     })
 
   })
@@ -20,6 +20,7 @@ $(() => {
   // Drop down list for selecting a map
 
     $('.drop-down-item').hide()
+    $('#event-form').hide()
 
 
     $('.drop-down').on('click', event => {
@@ -32,11 +33,11 @@ $(() => {
       $('.event-address').slideDown(400)
     })
 
-    $('#event-btn').on('click', event => {
-      $.post('/', (form) => {
-        //post form information to database
-      })
-    })
+    // $('#event-btn').on('click', event => {
+    //   $.post('/', (form) => {
+    //     //post form information to database
+    //   })
+    // })
 
     $('.event-btn').on('click', event => {
       if ($('.start-date').val() || $('.end-date').val() === '') {
@@ -49,4 +50,10 @@ $(() => {
       $target = $(event.target);
       $('#id').val($target.attr('mapId'))
     })
+
+    $('#searchTextField').on('change', (event) => {
+      $('#event-address').slideUp(400)
+      $('#event-form').slideDown(400)
+    })
+
 })
