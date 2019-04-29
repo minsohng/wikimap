@@ -32,7 +32,8 @@ function addEvents(events, google){
     let marker = new google.maps.Marker({
       position: {lat: Number(event.latitude), lng: Number(event.longitude)},
       map: map,
-      title: event.name
+      title: event.name,
+      animation: google.maps.Animation.DROP,
     });
     marker.setMap(map);
     let eventContent = createEvent(event);
