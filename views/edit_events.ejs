@@ -31,6 +31,7 @@
           <div class="content-wrapper">
              <img src="https://github.com/minsohng/wikimap/blob/Diana7/img/Screen%20Shot%202019-04-27%20at%202.10.00%20PM.png?raw=true" alt="Logo" id='logo'></img>
             <h2><%= email %></h2>
+
                           <!-- Event address section -->
               <div id="event-address" class="input-group mb-3 sign-in_2">
                 <h3>Event Address</h3>
@@ -53,7 +54,6 @@
                 <input type="text" name="name" value="<%= eventInfo[0].name%>">
                 <textarea name="description"><%= eventInfo[0].description%></textarea>
                 <h6>Start Date</h6>
-
                 <input type="date" name="start_date" value="<%= eventInfo[0].start_date%>">
                 <h6>End Date</h6>
                 <input type="date" name="end_date" value="<%= eventInfo[0].end_date%>">

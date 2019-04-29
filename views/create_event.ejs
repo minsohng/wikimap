@@ -25,7 +25,7 @@
 
   <body>
 
-    <div>
+    <div id="event-contain">
 
       <div class="row">
         <div class="col-sm-5 col-md-4 col-xl-3">
@@ -43,7 +43,7 @@
                     <button class="drop-down">Choose</button>
 
 
-                    <% mymaps.forEach( function(e) { %>
+                    <% allmaps.forEach( function(e) { %>
 
                     <button class="drop-down-item" mapId= <%=e.id %> ><%= e.name %></button>
 
@@ -98,7 +98,6 @@
           </div>
         </div>
       </div>
-    </div>
 
   </body>
 
